@@ -23,7 +23,7 @@ export default class Register extends Component {
 
     submitForm = async (event) => {
         event.preventDefault();
-        fetch('http://34.89.93.186:8080/apiv1/register',{
+        const response = await fetch('http://34.89.93.186:8080/apiv1/register',{
             method: 'POST',
             body: JSON.stringify ({
                 username:this.state.email,

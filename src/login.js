@@ -27,8 +27,15 @@ export default class Login extends Component {
         event.preventDefault();
         var requestOptions ={
             method:'POST',
+            body: JSON.stringify ({
+                username:this.state.email,
+                password: this.state.password
+            }),
+            headers:{
+                'content-Type': 'application/json'
+            },
         };
-        fetch("http//34.89.93.186:8080/apiv1/login?username="+this.state.email+"$password="+this.state.password,requestOptions)
+        fetch("http://34.89.93.186:8080/apiv1/login?username="+"&password=",requestOptions)
             .then(response => response.text())
             .then(result => console.log(result))
             .catch(error=>console.log('error', error));
