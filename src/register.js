@@ -40,8 +40,8 @@ export default class Register extends Component {
             <div>
                 <h2>Registrate</h2>
                 <form onSubmit = {this.submitForm}>
-                    <input type="text" value={email} onChange={this.handleEmail} />
-                    <input type="password" value={password} onChange={this.handlePassword} />
+                    <input type="text" value={email} placeholder="Introduce tu email" onChange={this.handleEmail} />
+                    <input type="password" value={password} placeholder="introduce tu contraseña" onChange={this.handlePassword} />
                     <input type="submit" value="Registrarse" />
                 </form>
             </div>

@@ -41,8 +41,8 @@ export default class Login extends Component {
             <div>
                 <h2>Login</h2>
                 <form onSubmit={this.submitForm}>
-                    <input type="text" value={email} onChange={this.handleEmail} />
-                    <input type="password" value={password} onChange={this.handlePassword} />
+                    <input type="text" value={email} placeholder="introduce tu email" onChange={this.handleEmail} />
+                    <input type="password" value={password} placeholder="introduce tu contraseña"onChange={this.handlePassword} />
                     <input type="submit" value="Login" />
                 </form>
             </div>
