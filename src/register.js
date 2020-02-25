@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link, Switch, withRouter, Redirect } from "react-router-dom";
 
 export default class Register extends Component {
     constructor(props) {
@@ -23,7 +24,7 @@ export default class Register extends Component {
 
     submitForm = async (event) => {
         event.preventDefault();
-        const response = await fetch('http://34.89.93.186:8080/apiv1/register',{
+        fetch('http://34.89.93.186:8080/apiv1/register',{
             method: 'POST',
             body: JSON.stringify ({
                 username:this.state.email,
@@ -44,6 +45,7 @@ export default class Register extends Component {
                     <input type="password" value={password} placeholder="introduce tu contraseña" onChange={this.handlePassword} />
                     <input type="submit" value="Registrarse" />
                 </form>
+                <Link to='/home'>Back</Link>
             </div>
         );
     };

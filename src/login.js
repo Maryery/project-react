@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Register from './register';
+import { BrowserRouter as Router, Route, Link, Switch, withRouter, Redirect } from "react-router-dom";
 
 export default class Login extends Component {
     constructor (props){
@@ -19,7 +19,7 @@ export default class Login extends Component {
     handlePassword = (event) =>{
         this.setState({
             password:event.target.value
-        })
+        });
     };
 
     submitForm =  async (event) =>{
@@ -49,10 +49,17 @@ export default class Login extends Component {
                 <h2>Login</h2>
                 <form onSubmit={this.submitForm}>
                     <input type="text" value={email} placeholder="introduce tu email" onChange={this.handleEmail} />
-                    <input type="password" value={password} placeholder="introduce tu contraseña"onChange={this.handlePassword} />
+                    <input type="password" value={password} placeholder="introduce tu contraseña" onChange={this.handlePassword} />
                     <input type="submit" value="Login" />
                 </form>
+                <div>
+                    <Link to='/filter'>Filter</Link>
+                </div>
+                <div>
+                    <Link to='/home'>Back</Link>
+                </div>
             </div>
         );
     };
 }
+
