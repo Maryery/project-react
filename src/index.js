@@ -1,17 +1,7 @@
 import React, { Component} from 'react';
 import { render } from 'react-dom';
-import BasicRoute from './BasicRoute';
+import App from './App';
 import * as serviceWorker from './serviceWorker';
-
-class App extends Component {
-    render () {
-        return (
-            <div>
-                <BasicRoute/>
-            </div>
-        )
-    }
-}
 
 render(<App />, document.getElementById('root'));
 

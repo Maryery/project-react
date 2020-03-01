@@ -1,11 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch, withRouter, Redirect } from "react-router-dom";
-import Home from './home';
-import Login from './login';
-import Register from './register';
-import Filter from './filter';
+import Home from './components/home/home';
+import Login from './components/login/login';
+import Register from './components/register/register';
+import Filter from './components/filter/filter';
+import DetailAd from './components/detailAd/detailAd';
 
-export default class BasicRoute extends React.Component {
+export default class App extends React.Component {
   render(){
     return (
       <Router>
@@ -20,9 +21,6 @@ export default class BasicRoute extends React.Component {
             <li>
               <Link to="/register">Registrarte</Link>
             </li>
-            <li>
-              <Link to="filter">Filter</Link>
-            </li>
           </ul>
         
         <hr />
@@ -32,6 +30,7 @@ export default class BasicRoute extends React.Component {
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/filter" component={Filter} />
+            <Route path="/ad/:id" component={DetailAd} />
             <Redirect to="/home" />
           </Switch>
         </div>

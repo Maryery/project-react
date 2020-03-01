@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch, withRouter, Redirect } from "react-router-dom";
-
+import './login.css'
 export default class Login extends Component {
     constructor (props){
         super(props);
@@ -25,39 +25,42 @@ export default class Login extends Component {
     submitForm =  async (event) =>{
         
         event.preventDefault();
-        var requestOptions ={
+        const requestOptions ={
             method:'POST',
+            credentials:'include',
             body: JSON.stringify ({
                 username:this.state.email,
                 password: this.state.password
             }),
             headers:{
-                'content-Type': 'application/json'
+                'Content-Type': 'application/json'
             },
         };
         fetch("http://34.89.93.186:8080/apiv1/login?username="+"&password=",requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error=>console.log('error', error));
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    window.location= 'filter'
+                } else {
+                    alert(result.error)
+                }
+        })
+            .catch(error=> alert(`error: ${error}`));
     }
 
     render = () => {
         const { email, password } = this.state;
 
         return (
-            <div>
-                <h2>Login</h2>
+            <div className='login-container'>
+                <h2>INICIAR SESIÓN</h2>
                 <form onSubmit={this.submitForm}>
-                    <input type="text" value={email} placeholder="introduce tu email" onChange={this.handleEmail} />
-                    <input type="password" value={password} placeholder="introduce tu contraseña" onChange={this.handlePassword} />
-                    <input type="submit" value="Login" />
+                    <input className='email'  type="text" value={email} placeholder="Introduce nombre de usuario" onChange={this.handleEmail} />
+                    <input className='password' type="password" value={password} placeholder="Introduce tu contraseña" onChange={this.handlePassword} />
+                    <input className='login' type="submit" value="Login" />
                 </form>
-                <div>
-                    <Link to='/filter'>Filter</Link>
-                </div>
-                <div>
-                    <Link to='/home'>Back</Link>
-                </div>
+               
+                <Link to='/register'><div className='register'>REGISTRATE</div></Link>
             </div>
         );
     };
